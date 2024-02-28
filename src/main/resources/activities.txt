@@ -1,0 +1,8 @@
+// Evoluir o produto do carinho para um pedido
+- Retirar produtos do carinho e passar para orderList
+
+// Criar mais de um pedido
+// Buscar pedidos por status : - Feito
+                               - Em andamento
+                               - Enviado
+                               - Finalizado

@@ -6,7 +6,7 @@ import java.util.List;
 public class Cart {
 
     private String id;
-    List<Product> productsList = new ArrayList<>();
+    public List<Product> productsList = new ArrayList<Product>();
 
     public String getId() {
         return id;

@@ -1,7 +1,12 @@
 package com.ecommerce.service;
 
+import com.ecommerce.model.Cart;
+import com.ecommerce.model.Product;
 import com.ecommerce.model.User;
 import com.ecommerce.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
 //Manipula a classe repository
@@ -17,18 +22,16 @@ public class UserService {
     }
 
     public boolean login (User user){
-        User dbUser = repository.login(user);
-        if(dbUser != null && dbUser.getEmail().equals(user.getEmail())){
-            if(dbUser.getPassword().equals(user.getPassword())){
+        User login = repository.findUserByEmail(user.getEmail());
+
+            if(login.getPassword().equals(user.getPassword())){
                 System.out.println("Login correto");
                 return true;
             }
             System.out.println("senha incorreta");
             return false;
-        }
-        System.out.println("Email não existe ou incorreto");
-        return false;
     }
 
-
 }
+
+// TODO 1 - addToCart ( product ) -> add to cart list

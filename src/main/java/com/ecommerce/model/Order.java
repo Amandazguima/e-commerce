@@ -6,15 +6,29 @@ import java.util.List;
 public class Order {
     
     private String id;
+
+    private String status;
     private String orderNumber;
+
     private double amount;
     List<Product> productList = new ArrayList<>();
 
-    public Order(String id, String orderNumber, Double amount, List<Product> productList) {
-        this.id = id;
-        this.orderNumber = orderNumber;
-        this.amount = amount;
+    private static int idStatic = 0;
+
+
+
+    public Order(List<Product> productList) {
         this.productList = productList;
+    }
+    public Order(String orderNumber, String status) {
+        this.id = String.valueOf(++idStatic);
+        this.orderNumber = orderNumber;
+        this.productList = productList;
+        this.status = status;
+    }
+
+    public enum status {
+        FEITO, EM_ANDAMENTO,ENVIADO,FINALIZADO;
     }
 
     public String getOrderNumber() {
@@ -26,6 +40,11 @@ public class Order {
     }
 
     public Double getAmount() {
+        this.amount = 0;
+
+        for(Product product: productList){
+            this.amount += product.getPrice();
+        }
         return amount;
     }
 
@@ -55,6 +74,14 @@ public class Order {
 
     public void setorderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public String getStatus(Enum<status> stautsEnum) {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }
