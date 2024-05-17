@@ -1,6 +1,8 @@
 package com.ecommerce.model;
 
 import com.ecommerce.fixture.OrderFixture;
+import com.ecommerce.model.order.Order;
+import com.ecommerce.model.product.Product;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,8 +28,11 @@ class OrderTest {
         Order order = OrderFixture.order;
         Order order2 = OrderFixture.order2;
 
-        assertEquals(order.getId(), "1");
-        assertEquals(order2.getId(), "2");
+        assertEquals(order.getId(), 1);
+        assertEquals(order2.getId(), 2);
     }
+
+
+
 
 }

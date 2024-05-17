@@ -1,34 +1,35 @@
-package com.ecommerce.model;
+package com.ecommerce.model.order;
+
+import com.ecommerce.model.Email;
+import com.ecommerce.model.product.Product;
+import com.ecommerce.subject.Publisher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     
-    private String id;
-
-    private String status;
+    private int id;
+    private Status status;
     private String orderNumber;
-
     private double amount;
-    List<Product> productList = new ArrayList<>();
+    public List<Email> emailHistory = new ArrayList<>();
+    public List<Product> productList = new ArrayList<>();
+
+
 
     private static int idStatic = 0;
 
-
-
     public Order(List<Product> productList) {
         this.productList = productList;
+        this.id = ++idStatic;
     }
-    public Order(String orderNumber, String status) {
-        this.id = String.valueOf(++idStatic);
+
+    public Order(String orderNumber, Status status) {
+        this.id = ++idStatic;
         this.orderNumber = orderNumber;
         this.productList = productList;
         this.status = status;
-    }
-
-    public enum status {
-        FEITO, EM_ANDAMENTO,ENVIADO,FINALIZADO;
     }
 
     public String getOrderNumber() {
@@ -47,7 +48,6 @@ public class Order {
         }
         return amount;
     }
-
     public void setAmount(Double amount) {
         this.amount = amount;
     }
@@ -60,12 +60,8 @@ public class Order {
         this.productList = productList;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getorderNumber() {
@@ -76,12 +72,21 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public String getStatus(Enum<status> stautsEnum) {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
+
+    public List<Email> getEmailHistory() {
+        return emailHistory;
+    }
+
+    public void setEmailHistory(List<Email> emailHistory) {
+        this.emailHistory = emailHistory;
+    }
+
 
 }

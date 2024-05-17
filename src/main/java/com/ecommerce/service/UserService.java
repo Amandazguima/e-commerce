@@ -1,12 +1,7 @@
 package com.ecommerce.service;
 
-import com.ecommerce.model.Cart;
-import com.ecommerce.model.Product;
 import com.ecommerce.model.User;
 import com.ecommerce.repository.UserRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserService {
 //Manipula a classe repository

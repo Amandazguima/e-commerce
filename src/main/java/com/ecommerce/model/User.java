@@ -1,5 +1,10 @@
 package com.ecommerce.model;
 
+import com.ecommerce.model.order.Order;
+import com.ecommerce.model.order.Status;
+import com.ecommerce.model.product.Product;
+import com.ecommerce.subject.Publisher;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,9 @@ public class User {
     private String id;
     private Cart cart;
     List<Order> orderList = new ArrayList<>();
+    public Order orderById;
+
+    public Publisher publisher = new Publisher();
 
     public User(String name, LocalDate birthday, String cpf, String email, String password, String id) {
         this.name = name;
@@ -41,13 +49,14 @@ public class User {
         this.cart = cart;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Order> getOrderList(List<Order> orderList) {
+        return this.orderList;
     }
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
     }
+
 
 
 
@@ -70,8 +79,36 @@ public class User {
         // orderList - Novo Pedido
         List<Product> productsListCopy = List.copyOf(cart.productsList);
         Order order = new Order(productsListCopy);
+        order.setStatus(Status.FEITO);
         this.orderList.add(order);
         this.cart.productsList.clear();
+    }
+
+    public User getOrderById(Integer id){
+        List<Product> productsListCopy = List.copyOf(cart.productsList);
+        Order order = new Order(productsListCopy);
+
+        for(Order o: orderList) {
+            if (o.getId() == id) {
+                orderById = o;
+                return this;
+            }
+
+        }
+        return null;
+    }
+
+    public Status setOrderStatus(Status status){
+
+       Email email = new Email(this.getEmail(), status,orderById.getId(), orderById.getStatus());
+
+        orderById.setStatus(status);
+
+        orderById.emailHistory.add(email);
+
+        this.publisher.notify(status.toString(), email);
+
+        return status;
     }
 
     @Override
@@ -127,6 +164,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
     }
 
 }

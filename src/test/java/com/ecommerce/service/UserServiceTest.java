@@ -1,7 +1,6 @@
 package com.ecommerce.service;
 
 import com.ecommerce.fixture.UserFixture;
-import com.ecommerce.model.Product;
 import com.ecommerce.model.User;
 
 import com.ecommerce.repository.UserRepository;

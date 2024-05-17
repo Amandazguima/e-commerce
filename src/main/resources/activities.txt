@@ -6,3 +6,18 @@
                                - Em andamento
                                - Enviado
                                - Finalizado
+
+// Dentro da classe User mudar os status de todos os pedidos
+// 2 pedidos, pega id 1 pra EM ANDAMENTO e  id 2 muda pra ENVIADO
+
+// PRODUCT REPOSITORY FAZER UM GET POR INTERVALO DE VALOR (VALOR INICIAL E VALOR FINAL) FILTRO DE VALORES
+
+// Aplicar padrão Observer para notificação de e-mail
+https://refactoring.guru/pt-br/design-patterns/observer
+
+// Aplicar dentro de order criar o atributo email history que recebe uma lista de emails
+
+// Dentro de setStatus um parametro que recebe order stautus.
+
+// Aplicar pattern method chaining https://www.geeksforgeeks.org/method-chaining-in-java-with-examples/
+// Refatorar user SetOrderStatus para user.getOrderById(1).SetStatus(status)

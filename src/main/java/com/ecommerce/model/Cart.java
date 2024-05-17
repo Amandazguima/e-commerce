@@ -1,5 +1,7 @@
 package com.ecommerce.model;
 
+import com.ecommerce.model.product.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
